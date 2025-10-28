@@ -3,7 +3,7 @@ import { Search as SearchIcon, Play } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import PlayerStore from '../store/PlayerStore';
-import { searchMusic } from '../api/youtube'; // <-- FIXED IMPORT
+import { searchMusic } from '../api/youtube'; // correct import
 
 export default function Search() {
   const [query, setQuery] = useState('');
@@ -12,7 +12,7 @@ export default function Search() {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!query.trim()) return;
-    const data = await searchMusic(query); // <-- USE searchMusic
+    const data = await searchMusic(query);
     setResults(data || []);
   };
 
@@ -32,7 +32,7 @@ export default function Search() {
         />
         <button
           type="submit"
-          className="bg-godlike-green px-4 py-2 rounded-lg text-black font-bold"
+          className="bg-godlike-green px-4 py-2 rounded-lg text-black font-bold flex items-center"
         >
           <SearchIcon className="inline mr-2" size={18} /> Search
         </button>
@@ -45,4 +45,23 @@ export default function Search() {
             className="bg-white/5 border-none hover:bg-white/10 transition-all p-4 group cursor-pointer"
             onClick={() => handlePlay(track)}
           >
-            <div classNam
+            <div className="relative mb-4">
+              <img
+                src={track.thumbnail || '/default_album.png'}
+                alt={track.title}
+                className="rounded-xl w-full h-40 object-cover"
+              />
+              <button className="absolute bottom-2 right-2 bg-godlike-green text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition">
+                <Play size={20} />
+              </button>
+            </div>
+            <h3 className="font-semibold truncate">{track.title}</h3>
+            <p className="text-sm text-gray-400 truncate">
+              {track.artist || 'Unknown Artist'}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
