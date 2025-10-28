@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card } from '../components/ui/Card';
+import Card from './Card';
 import PlayerStore from '../store/PlayerStore';
 import { storage } from '../utils/helpers';
 import Dialog, { DialogContent, DialogHeader, DialogTitle } from '../components/ui/Dialog';
