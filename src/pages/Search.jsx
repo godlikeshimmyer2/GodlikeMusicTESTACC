@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Search as SearchIcon, Play } from 'lucide-react';
-import { Card } from '../components/ui/Card';
+import Card from '../components/ui/Card'; // default export
 import { Input } from '../components/ui/Input';
 import PlayerStore from '../store/PlayerStore';
-import { searchMusic } from '../api/youtube'; // correct import
+import { searchMusic } from '../api/youtube'; // correct path
 
 export default function Search() {
   const [query, setQuery] = useState('');
